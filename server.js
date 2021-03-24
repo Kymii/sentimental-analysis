@@ -35,7 +35,7 @@ app.post('/analysis', async(req, res) => {
     const url = req.body.input;
 
     let link = baseURL + key + '&lang=en&url=' + url;
-    console.log(link)
+
     const response = await fetch(link)
     try {
         const info = await response.json()
