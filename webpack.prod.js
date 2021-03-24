@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/server/index.js',
-    mode: "development",
+    mode: "production",
     devtool: 'source-map',
     output: {
         libraryTarget: 'var',
