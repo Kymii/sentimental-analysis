@@ -1,8 +1,9 @@
 var path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/server/index.js',
+    entry: './src/client/index.js',
     mode: "production",
     devtool: 'source-map',
     output: {
@@ -20,7 +21,7 @@ module.exports = {
                 test: /\.scss$/,
                 use: ["style-loader", "css-loader", "sass-loader"],
               },
-        ]
+        ],
     },
     plugins: [
         new HtmlWebPackPlugin({

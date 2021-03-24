@@ -1,8 +1,9 @@
 var path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-    entry: './src/server/index.js',
+    entry: './src/client/index.js',
     mode: "development",
     devtool: 'source-map',
     output: {
@@ -16,7 +17,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: "/.js$/",
+                test: /.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader",
               },
