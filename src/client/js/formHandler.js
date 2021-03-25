@@ -1,29 +1,32 @@
 import {validate} from './validateURL'
+const axios = require('axios');
 
 const handle = (e) => {
     e.preventDefault()
-
+    //grab url input from user
     let input = document.getElementById('userInput').value;
-
+    //check url against regex, if returns true grab data from server and update UI
     if (validate(input)) {
-        fetch('http://localhost:5050/analysis', {
-            method: 'POST',
-            credentials: 'same-origin',
+        axios({
+            method: 'post',
+            url: 'http://localhost:5050/analysis',
             headers: {
-                'content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({input}),
-        }).then((res) => res.json())
+            data: JSON.stringify({input}),
+        })
         .then((res) => {
+            console.log(res)
             document.querySelector('#results').classList.remove('hidden');
             
             document.querySelector('.heading').innerHTML = `<h2>Results</h2><br><p>URL submitted: ${input}`;
             
-            document.querySelector('#irony').innerHTML = `<p>Irony: ${res.irony}</p>`;
-            document.querySelector('#subjectivity').innerHTML = `<p>Subjectivity: ${res.subjectivity}</p>`;
-            document.querySelector('#confidence').innerHTML = `<p>Confidence: ${res.confidence}</p>`;
-            document.querySelector('#score').innerHTML = ` <p>Score: ${get_score(res.score_tag)}</p>`;
-            document.querySelector('#agreement').innerHTML = `<p>Agreement: ${res.agreement}</p>`;
+            document.querySelector('#irony').innerHTML = `<p>Irony: ${res.data.irony}</p>`;
+            document.querySelector('#subjectivity').innerHTML = `<p>Subjectivity: ${res.data.subjectivity}</p>`;
+            document.querySelector('#confidence').innerHTML = `<p>Confidence: ${res.data.confidence}</p>`;
+            document.querySelector('#score').innerHTML = ` <p>Score: ${get_score(res.data.score_tag)}</p>`;
+            document.querySelector('#agreement').innerHTML = `<p>Agreement: ${res.data.agreement}</p>`;
         })
         
     } else {
@@ -31,6 +34,7 @@ const handle = (e) => {
     }
 }
 
+//switch case to handle output for score tag
 const get_score = (str) => {
     let score = '';
             switch(str) {
@@ -56,3 +60,4 @@ const get_score = (str) => {
 }
 
 export {handle}
+
