@@ -2,7 +2,7 @@ import {validate} from './validateURL'
 const axios = require('axios');
 
 const handle = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     //grab url input from user
     let input = document.getElementById('userInput').value;
     //check url against regex, if returns true grab data from server and update UI
@@ -17,7 +17,6 @@ const handle = (e) => {
             data: JSON.stringify({input}),
         })
         .then((res) => {
-            console.log(res)
             document.querySelector('#results').classList.remove('hidden');
             
             document.querySelector('.heading').innerHTML = `<h2>Results</h2><br><p>URL submitted: ${input}`;
@@ -30,7 +29,7 @@ const handle = (e) => {
         })
         
     } else {
-        alert('Please enter a valid url')
+        alert('Please enter a valid url. Ex. "https://www.google.com"')
     }
 }
 
