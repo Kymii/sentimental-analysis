@@ -20,7 +20,8 @@
     "jest": "^26.6.3",
     "node-sass": "^5.0.0",
     "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0"
+    "style-loader": "^2.0.0",
+    "workbox-webpack-plugin": "^6.1.2"
   },
   "scripts": {
     "build-prod": "webpack --config webpack.prod.js",

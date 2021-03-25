@@ -37,6 +37,14 @@
         <footer id="footer">
             ©2021 Udacity Project
         </footer>
-        <script src="https://kit.fontawesome.com/7920d15dd7.js" crossorigin="anonymous"></script>
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+           </script>
     </body>
 </html>
