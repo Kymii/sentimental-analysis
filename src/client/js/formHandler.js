@@ -41,7 +41,7 @@ const get_score = (str) => {
                     score = 'Positive';
                     break;
                 case 'NEU':
-                    score = 'Nuetral';
+                    score = 'Neutral';
                     break;
                 case 'N':
                     score = 'Negative';
