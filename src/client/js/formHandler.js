@@ -17,15 +17,13 @@ const handle = (e) => {
         .then((res) => {
             document.querySelector('#results').classList.remove('hidden');
             
-
-            document.querySelector('.info').innerHTML = 
-            `<p>URL submitted: <br>${input}<br><br><br>
-             <p>Irony: ${res.irony}</p><br>
-             <p>Segment: ${res.subjectivity}</p><br>
-             <p>Confidence: ${res.confidence}</p><br>
-             <p>Score: ${get_score(res.score_tag)}</p><br>
-             <p>Agreement: ${res.agreement}</p>`
-
+            document.querySelector('.heading').innerHTML = `<h2>Results</h2><br><p>URL submitted: ${input}`;
+            
+            document.querySelector('#irony').innerHTML = `<p>Irony: ${res.irony}</p>`;
+            document.querySelector('#subjectivity').innerHTML = `<p>Subjectivity: ${res.subjectivity}</p>`;
+            document.querySelector('#confidence').innerHTML = `<p>Confidence: ${res.confidence}</p>`;
+            document.querySelector('#score').innerHTML = ` <p>Score: ${get_score(res.score_tag)}</p>`;
+            document.querySelector('#agreement').innerHTML = `<p>Agreement: ${res.agreement}</p>`;
         })
         
     } else {
