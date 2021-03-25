@@ -4,7 +4,8 @@ const dotenv = require('dotenv');
 dotenv.config()
 const express = require('express');
 const cors = require('cors');
-const fetch = require("node-fetch");
+const axios = require('axios');
+
 
 //initialize
 const app = express();
@@ -36,10 +37,9 @@ app.post('/analysis', async(req, res) => {
 
     let link = baseURL + key + '&lang=en&url=' + url;
 
-    const response = await fetch(link)
     try {
-        const info = await response.json()
-        res.send(info)
+        let info = await axios.post(link);
+        res.send(info.data)
     } catch(err) {
         console.log(err)
     }
